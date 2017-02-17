@@ -6,64 +6,76 @@ package lazyrest.common.util;
  */
 public class Result {
 
-
-    private static final String OK = "ok";
-    private static final String ERROR = "error";
-
-    private Meta meta;
+    private Status status;
     private Object data;
 
     public Result success() {
-        this.meta = new Meta(true, OK);
+        this.status = new Status(true);
         return this;
     }
 
     public Result success(Object data) {
-        this.meta = new Meta(true, OK);
+        this.status = new Status(true);
         this.data = data;
         return this;
     }
 
     public Result failure() {
-        this.meta = new Meta(false, ERROR);
+        this.status = new Status(false);
+        return this;
+    }
+
+    public Result failure(int code, String message) {
+        this.status = new Status(code, message);
         return this;
     }
 
     public Result failure(String message) {
-        this.meta = new Meta(false, message);
+        this.status = new Status(Constants.CODE_BAD_REQUEST, message);
         return this;
     }
 
     public Result failure(String message, Object data) {
-        this.meta = new Meta(false, message);
+        this.status = new Status(Constants.CODE_BAD_REQUEST, message);
         this.data = data;
         return this;
     }
 
-    public Meta getMeta() {
-        return meta;
+    public Result failure(int code, String message, Object data) {
+        this.status = new Status(code, message);
+        this.data = data;
+        return this;
+    }
+
+
+    public Status getStatus() {
+        return status;
     }
 
     public Object getData() {
         return data;
     }
 
-    public class Meta {
+    public class Status {
 
-        private boolean success;
+        private int code;
         private String message;
 
-        public Meta(boolean success) {
-            this.success = success;
+        public Status(boolean success) {
+            if (success) {
+                code = Constants.CODE_SUCCESS;
+            } else {
+                code = Constants.CODE_BAD_REQUEST;
+            }
         }
 
-        public Meta(boolean success, String message) {
-            this.success = success;
+        public Status(int code, String message) {
+            this.code = code;
             this.message = message;
         }
 
-        public boolean isSuccess() {
-            return success;
+        public int getCode() {
+            return code;
         }
 
         public String getMessage() {

@@ -1,6 +1,6 @@
 #LazyREST
 
-> LazyREST是一个完整实用基于SSM来实现RESTful服务的脚手架
+> LazyREST是一个整合了SSM的非常简单但又全面的J2EE-RESTful脚手架
 
 ## 技术选型
 * Spring 4.2.6
@@ -9,9 +9,9 @@
 * Hibernate Validator 5.1.3
 * Druid 1.0.19
 * Redis 2.3.1
-* Swagger 2.0
+* ~~Swagger 2.0~~
 * JDK 1.7
-* Tomcat8
+* Tomcat 8
 * Maven
 
 ##项目结构
@@ -26,12 +26,11 @@
 
 ## TO DO
 
-~~目录结构优化
-添加Memcached~~
+~~目录结构优化~~
 优化Result
 
 -------
-LazyREST是一个非常简单但又非常全面的J2EE-RESTful脚手架，如果它能帮到你，我很开心 :)
+### 如果它让你有收获，我很开心 :)
 
 
 

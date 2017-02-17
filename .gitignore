@@ -229,3 +229,7 @@ target/lazy-rest/WEB-INF/lib/jackson-core-2.8.5.jar
 target/lazy-rest/WEB-INF/lib/jackson-databind-2.8.5.jar
 target/lazy-rest/WEB-INF/lib/javaee-api-7.0.jar
 target/lazy-rest/WEB-INF/lib/javax.mail-1.5.0.jar
+target/classes/lazyrest/common/util/Constants.class
+target/classes/lazyrest/common/util/Result$Status.class
+target/lazy-rest/WEB-INF/classes/lazyrest/common/util/Constants.class
+target/lazy-rest/WEB-INF/classes/lazyrest/common/util/Result$Status.class

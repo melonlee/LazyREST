@@ -38,7 +38,7 @@ public class UserController {
     public Result login(@Valid User user, BindingResult result) {
 
         if (result.hasErrors()) {
-            return new Result().failure("error", ValidateUtil.toStringJson(result));
+            return new Result().failure("参数有误", ValidateUtil.toStringJson(result));
         }
         User sysUser = userService.login(user);
         if (sysUser == null) {
@@ -47,9 +47,7 @@ public class UserController {
         }
         String token = tokenManager.createToken(sysUser.getUsername());
         Map<String, Object> map = new HashMap<String, Object>();
-        //返回用户对象
         map.put("user", sysUser);
-        //返回给客户端Token,用于安全校验,需要客户端保存起来
         map.put("token", token);
         return new Result().success(map);
 
