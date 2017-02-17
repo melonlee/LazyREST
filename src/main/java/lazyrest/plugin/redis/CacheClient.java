@@ -1,4 +1,4 @@
-package lazyrest.plugin;
+package lazyrest.plugin.redis;
 
 import java.util.Set;
 

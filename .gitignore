@@ -216,3 +216,16 @@ target/lazy-rest/WEB-INF/classes/spring/spring-memcached.xml
 target/lazy-rest/WEB-INF/lib/commons-beanutils-1.8.3.jar
 target/lazy-rest/WEB-INF/lib/shiro-core-1.2.2.jar
 target/lazy-rest/WEB-INF/lib/xmemcached-2.0.0.jar
+target/classes/lazyrest/plugin/log/ExceptionLogAspect.class
+target/classes/lazyrest/plugin/redis/CacheClient.class
+target/classes/lazyrest/plugin/redis/JedisClientImpl.class
+target/lazy-rest/WEB-INF/classes/lazyrest/plugin/log/ExceptionLogAspect.class
+target/lazy-rest/WEB-INF/classes/lazyrest/plugin/redis/CacheClient.class
+target/lazy-rest/WEB-INF/classes/lazyrest/plugin/redis/JedisClientImpl.class
+target/lazy-rest/WEB-INF/lib/activation-1.1.jar
+target/lazy-rest/WEB-INF/lib/classmate-1.0.0.jar
+target/lazy-rest/WEB-INF/lib/jackson-annotations-2.8.5.jar
+target/lazy-rest/WEB-INF/lib/jackson-core-2.8.5.jar
+target/lazy-rest/WEB-INF/lib/jackson-databind-2.8.5.jar
+target/lazy-rest/WEB-INF/lib/javaee-api-7.0.jar
+target/lazy-rest/WEB-INF/lib/javax.mail-1.5.0.jar

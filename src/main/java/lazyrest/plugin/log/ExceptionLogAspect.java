@@ -20,9 +20,9 @@ import java.util.Map;
  */
 @Aspect
 @Component
-public class ExceptionLogAdvice {
+public class ExceptionLogAspect {
 
-    public static final Logger logger = Logger.getLogger(ExceptionLogAdvice.class);
+    public static final Logger logger = Logger.getLogger(ExceptionLogAspect.class);
 
 
     @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")

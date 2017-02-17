@@ -1,6 +1,5 @@
 package lazyrest.common.util;
 
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Created by Melon on 17/2/15.
@@ -11,9 +10,7 @@ public class Result {
     private static final String OK = "ok";
     private static final String ERROR = "error";
 
-    @ApiModelProperty("状态")
     private Meta meta;
-    @ApiModelProperty("数据")
     private Object data;
 
     public Result success() {
@@ -53,9 +50,7 @@ public class Result {
 
     public class Meta {
 
-        @ApiModelProperty("返回状态")
         private boolean success;
-        @ApiModelProperty("消息")
         private String message;
 
         public Meta(boolean success) {

@@ -1,6 +1,5 @@
 package lazyrest.plugin.redis;
 
-import lazyrest.plugin.CacheClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
@@ -12,7 +11,7 @@ import java.util.Set;
  * Created by Melon on 17/2/16.
  */
 @Service
-public class JedisClient implements CacheClient {
+public class JedisClientImpl implements CacheClient {
 
     @Autowired
     private JedisPool jedisPool;

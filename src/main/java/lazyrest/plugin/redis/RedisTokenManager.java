@@ -1,6 +1,5 @@
 package lazyrest.plugin.redis;
 
-import lazyrest.plugin.CacheClient;
 import lazyrest.plugin.security.TokenManager;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -14,7 +13,7 @@ import java.util.UUID;
 @Component
 public class RedisTokenManager implements TokenManager {
 
-    @Resource(name = "jedisClient")
+    @Resource(name = "jedisClientImpl")
     private CacheClient cacheClient;
 
     /**

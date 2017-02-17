@@ -15,7 +15,7 @@
 * Maven
 
 ##项目结构
-![](http://wx3.sinaimg.cn/mw690/775c483fly1fcthlg9htbj20bu0jrq48.jpg)
+![](http://wx2.sinaimg.cn/mw690/775c483fly1fcthta6ymdj20c90kh0uk.jpg)
 
 ## 技术实现
 

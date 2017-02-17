@@ -1,7 +1,6 @@
 package lazyrest.web.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import io.swagger.annotations.ApiOperation;
 import lazyrest.common.util.Result;
 import lazyrest.common.anno.Log;
 import lazyrest.common.anno.Token;
@@ -9,7 +8,6 @@ import lazyrest.common.util.ValidateUtil;
 import lazyrest.entity.User;
 import lazyrest.plugin.security.TokenManager;
 import lazyrest.service.IUserService;
-import lazyrest.web.exception.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +34,6 @@ public class UserController {
     private TokenManager tokenManager;
 
     @Log("用户登录")
-    @ApiOperation(value = "用户登录", response = Result.class)
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result login(@Valid User user, BindingResult result) {
 
