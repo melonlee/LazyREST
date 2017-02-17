@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableWebMvc
 @EnableSwagger2
-@ComponentScan(basePackages = {"lazyrest.controller"})
+@ComponentScan(basePackages = {"lazyrest.web.controller"})
 @Configuration
 public class SwaggerConfig {
 

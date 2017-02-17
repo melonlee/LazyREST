@@ -15,6 +15,5 @@ public interface IUserService extends IService<User> {
 
     User login(User user);
 
-    List<User> list(int pageF);
-
+    User register(User user);
 }

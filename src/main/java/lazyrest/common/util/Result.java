@@ -1,4 +1,4 @@
-package lazyrest.common;
+package lazyrest.common.util;
 
 import io.swagger.annotations.ApiModelProperty;
 

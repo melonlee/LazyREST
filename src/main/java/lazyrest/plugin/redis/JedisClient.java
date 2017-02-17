@@ -1,115 +1,247 @@
 package lazyrest.plugin.redis;
 
+import lazyrest.plugin.CacheClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+
 import java.util.Set;
 
 /**
  * Created by Melon on 17/2/16.
  */
-public interface JedisClient {
+@Service
+public class JedisClient implements CacheClient {
 
-    /**
-     * 获取缓存
-     *
-     * @param key
-     * @return
-     */
-    String get(String key);
+    @Autowired
+    private JedisPool jedisPool;
 
-    byte[] get(byte[] key);
+    public String get(String key) {
+        String value = null;
+        Jedis jedis = jedisPool.getResource();
+        try {
+            value = jedis.get(key);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return value;
+    }
 
-    /**
-     * 设置缓存
-     *
-     * @param key
-     * @param value
-     * @return
-     */
-    String set(String key, String value);
+    public byte[] get(byte[] key) {
+        byte[] value = null;
+        Jedis jedis = jedisPool.getResource();
+        try {
+            value = jedis.get(key);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return value;
+    }
 
-    /**
-     * 设置缓存
-     *
-     * @param key
-     * @param value
-     * @param expire 过去时间
-     * @return
-     */
-    String set(String key, String value, int expire);
+    public String set(String key, String value) {
+        Jedis jedis = jedisPool.getResource();
+        try {
+            value = jedis.set(key, value);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return value;
+    }
 
-    String set(byte[] key, byte[] value);
+    public String set(String key, String value, int expire) {
+        Jedis jedis = jedisPool.getResource();
+        try {
+            value = jedis.set(key, value);
+            if (expire != 0) {
+                jedis.expire(key, expire);
+            }
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return value;
+    }
 
-    String set(byte[] key, byte[] value, int expire);
+    public String set(byte[] key, byte[] value) {
+        Jedis jedis = jedisPool.getResource();
+        String v = null;
+        try {
+            v = jedis.set(key, value);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return v;
+    }
 
-    /**
-     * 哈希 获取缓存
-     *
-     * @param hkey
-     * @param key
-     * @return
-     */
-    String hget(String hkey, String key);
+    public String set(byte[] key, byte[] value, int expire) {
+        Jedis jedis = jedisPool.getResource();
+        String v = null;
+        try {
+            v = jedis.set(key, value);
+            if (expire != 0) {
+                jedis.expire(key, expire);
+            }
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return v;
+    }
 
-    /**
-     * 哈希 设置缓存
-     *
-     * @param hkey
-     * @param key
-     * @param value
-     * @return
-     */
-    long hset(String hkey, String key, String value);
+    public String hget(String hkey, String key) {
+        String value = null;
+        Jedis jedis = jedisPool.getResource();
+        try {
+            value = jedis.hget(hkey, key);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return value;
+    }
 
-    /**
-     * 获取自增值
-     *
-     * @param key
-     * @return
-     */
-    long incr(String key);
+    public long hset(String hkey, String key, String value) {
+        Jedis jedis = jedisPool.getResource();
+        Long result = null;
+        try {
+            result = jedis.hset(hkey, key, value);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
 
-    /**
-     * 设置有效期
-     *
-     * @param key
-     * @param second
-     * @return
-     */
-    long expire(String key, int second);
+    public long incr(String key) {
+        Jedis jedis = jedisPool.getResource();
+        Long result = null;
+        try {
+            result = jedis.incr(key);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
 
-    /**
-     * 获取有效期
-     *
-     * @param key
-     * @return
-     */
-    long ttl(String key);
+    public long expire(String key, int second) {
+        Jedis jedis = jedisPool.getResource();
+        Long result = null;
+        try {
+            result = jedis.expire(key, second);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
 
-    /**
-     * 删除缓存
-     *
-     * @param key
-     * @return
-     */
-    long del(String key);
+    public long ttl(String key) {
+        Jedis jedis = jedisPool.getResource();
+        Long result = null;
+        try {
+            result = jedis.ttl(key);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
 
-    long del(byte[] key);
+    public long del(String key) {
+        Jedis jedis = jedisPool.getResource();
+        Long result = null;
+        try {
+            result = jedis.del(key);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
 
-    /**
-     * 删除哈希 缓存
-     *
-     * @param hkey
-     * @param key
-     * @return
-     */
-    long hdel(String hkey, String key);
+    public long del(byte[] key) {
+        Jedis jedis = jedisPool.getResource();
+        Long result = null;
+        try {
+            result = jedis.del(key);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
 
-    Set<byte[]> keys(String pattern);
+    public long hdel(String hkey, String key) {
+        Jedis jedis = jedisPool.getResource();
+        Long result = null;
+        try {
+            result = jedis.hdel(hkey, key);
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
 
-    /**
-     * 刷新数据
-     */
-    void flushDB();
+    public Set<byte[]> keys(String pattern) {
+        Set<byte[]> keys = null;
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+        } catch (Exception e) {
+            return null;
+        }
+        try {
+            keys = jedis.keys(pattern.getBytes());
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return keys;
+    }
 
-    Long dbSize();
+    public void flushDB() {
+        Jedis jedis = jedisPool.getResource();
+        try {
+            jedis.flushDB();
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+    }
 
+    public Long dbSize() {
+        Long dbSize = 0L;
+        Jedis jedis = jedisPool.getResource();
+        try {
+            dbSize = jedis.dbSize();
+        } catch (Exception e) {
+            jedisPool.returnBrokenResource(jedis);
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return dbSize;
+    }
 }

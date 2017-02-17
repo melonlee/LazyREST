@@ -1,4 +1,4 @@
-package lazyrest.plugin.token;
+package lazyrest.web.exception;
 
 /**
  * Created by Melon on 17/2/16.
@@ -11,7 +11,7 @@ public class TokenException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     public TokenException() {
-        super("client token is invalid.");
+        super("客户端Token失效!");
     }
 
     public TokenException(String message, Throwable cause,

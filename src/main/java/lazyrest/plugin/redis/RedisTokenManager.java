@@ -1,10 +1,11 @@
-package lazyrest.plugin.token;
+package lazyrest.plugin.redis;
 
-import lazyrest.plugin.redis.JedisClient;
-import org.springframework.beans.factory.annotation.Autowired;
+import lazyrest.plugin.CacheClient;
+import lazyrest.plugin.security.TokenManager;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.UUID;
 
 /**
@@ -13,8 +14,8 @@ import java.util.UUID;
 @Component
 public class RedisTokenManager implements TokenManager {
 
-    @Autowired
-    private JedisClient jedisClient;
+    @Resource(name = "jedisClient")
+    private CacheClient cacheClient;
 
     /**
      * 存储15天
@@ -26,15 +27,16 @@ public class RedisTokenManager implements TokenManager {
      */
     public String createToken(String uid) {
         String token = UUID.randomUUID().toString().replaceAll("-", "");
-        jedisClient.set(token, uid, timeOut);
+        cacheClient.set(token, uid, timeOut);
         return token;
     }
+
 
     /**
      * 验证Token
      */
     public boolean checkToken(String token) {
 
-        return !StringUtils.isEmpty(jedisClient.get(token));
+        return !StringUtils.isEmpty(cacheClient.get(token));
     }
 }

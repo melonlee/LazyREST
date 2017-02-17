@@ -1,4 +1,4 @@
-package lazyrest.plugin;
+package lazyrest.common.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
+ * Spring JSON输出格式化转换
  * Created by Melon on 17/2/16.
  */
 public class CustomObjectMapper extends ObjectMapper {

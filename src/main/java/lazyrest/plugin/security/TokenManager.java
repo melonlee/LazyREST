@@ -1,4 +1,4 @@
-package lazyrest.plugin.token;
+package lazyrest.plugin.security;
 
 /**
  * Created by Melon on 17/2/16.

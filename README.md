@@ -14,6 +14,9 @@
 * Tomcat8
 * Maven
 
+##项目结构
+![](http://wx3.sinaimg.cn/mw690/775c483fly1fcthlg9htbj20bu0jrq48.jpg)
+
 ## 技术实现
 
 * 实现基于RESTful风格规范的接口
@@ -23,15 +26,12 @@
 
 ## TO DO
 
-目录结构优化
-添加Memcached
-添加Ehcache
-
+~~目录结构优化
+添加Memcached~~
+优化Result
 
 -------
-LazyREST非常简单，主要用于为平时工作中提供一个方便快速但功能也强大完整的脚手架 :)
-
-如果能帮到你，我很开心 :)
+LazyREST是一个非常简单但又非常全面的J2EE-RESTful脚手架，如果它能帮到你，我很开心 :)
 
 
 

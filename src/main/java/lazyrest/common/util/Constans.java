@@ -1,4 +1,4 @@
-package lazyrest.common;
+package lazyrest.common.util;
 
 /**
  * Created by Melon on 17/2/15.

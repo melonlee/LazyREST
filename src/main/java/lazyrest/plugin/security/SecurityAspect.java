@@ -1,6 +1,7 @@
-package lazyrest.plugin.token;
+package lazyrest.plugin.security;
 
-import lazyrest.common.anno.TokenSecurity;
+import lazyrest.common.anno.Token;
+import lazyrest.web.exception.TokenException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -47,7 +48,7 @@ public class SecurityAspect {
         /**
          * 验证Token
          */
-        if (method.isAnnotationPresent(TokenSecurity.class)) {
+        if (method.isAnnotationPresent(Token.class)) {
             // 从 request header 中获取当前 token
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             String token = request.getHeader(DEFAULT_TOKEN_NAME);

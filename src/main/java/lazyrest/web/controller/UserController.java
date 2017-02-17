@@ -1,15 +1,15 @@
-package lazyrest.controller;
+package lazyrest.web.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import io.swagger.annotations.ApiOperation;
-import lazyrest.common.Result;
+import lazyrest.common.util.Result;
 import lazyrest.common.anno.Log;
-import lazyrest.common.anno.TokenSecurity;
-import lazyrest.common.util.PasswordUtil;
+import lazyrest.common.anno.Token;
 import lazyrest.common.util.ValidateUtil;
 import lazyrest.entity.User;
-import lazyrest.plugin.token.TokenManager;
+import lazyrest.plugin.security.TokenManager;
 import lazyrest.service.IUserService;
+import lazyrest.web.exception.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,18 +44,21 @@ public class UserController {
             return new Result().failure("error", ValidateUtil.toStringJson(result));
         }
         User sysUser = userService.login(user);
-        if (sysUser != null) {
-            String token = tokenManager.createToken(sysUser.getUsername());
-            Map<String, Object> map = new HashMap<String, Object>();
-            //返回用户对象
-            map.put("user", sysUser);
-            //返回给客户端Token,用于安全校验,需要客户端保存起来
-            map.put("token", token);
-            return new Result().success(map);
+        if (sysUser == null) {
+            //注册用户
+            sysUser = userService.register(user);
         }
-        throw new RuntimeException("用户名或密码错误");
+        String token = tokenManager.createToken(sysUser.getUsername());
+        Map<String, Object> map = new HashMap<String, Object>();
+        //返回用户对象
+        map.put("user", sysUser);
+        //返回给客户端Token,用于安全校验,需要客户端保存起来
+        map.put("token", token);
+        return new Result().success(map);
+
     }
 
+    @Token
     @RequestMapping(value = "/list/{page}", method = RequestMethod.GET)
     public Result list(@PathVariable("page") int page) {
         Page<User> pageData = userService.selectPage(new Page<User>(page, 10));

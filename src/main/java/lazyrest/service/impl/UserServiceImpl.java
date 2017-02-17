@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @Service
-public class UserService extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
     @Autowired
     private UserMapper userMapper;
@@ -30,10 +30,15 @@ public class UserService extends ServiceImpl<UserMapper, User> implements IUserS
 
         passwordUtil.encryptPassword(user);
 
-        return this.selectOne(new EntityWrapper<User>().eq("userName", user.getUsername()).eq("password", user.getPassword()));
+        return this.selectOne(new EntityWrapper<User>().eq("username", user.getUsername()).eq("password", user.getPassword()));
     }
 
-    public List<User> list(int pageF) {
-        return null;
+    public User register(User user) {
+
+        passwordUtil.encryptPassword(user);
+
+        this.insert(user);
+
+        return user;
     }
 }
