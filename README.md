@@ -9,6 +9,7 @@
 * Hibernate Validator 5.1.3
 * Druid 1.0.19
 * Redis 2.3.1
+* Quartz 1.8.3
 * ~~Swagger 2.0~~
 * JDK 1.7
 * Tomcat 8
@@ -28,6 +29,7 @@
 ## TO DO
 * ~~Add Spring Test~~
 * ~~项目结构目录、包结构、接口、实现类优化~~
+* ~~增加Quartz定时器~~
 * 优化Result
 
 -------

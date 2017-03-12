@@ -233,3 +233,11 @@ target/classes/lazyrest/common/util/Constants.class
 target/classes/lazyrest/common/util/Result$Status.class
 target/lazy-rest/WEB-INF/classes/lazyrest/common/util/Constants.class
 target/lazy-rest/WEB-INF/classes/lazyrest/common/util/Result$Status.class
+target/classes/lazyrest/plugin/quartz/CacheQuartz.class
+target/classes/spring/spring-quartz.xml
+target/lazy-rest/WEB-INF/classes/lazyrest/plugin/quartz/CacheQuartz.class
+target/lazy-rest/WEB-INF/classes/spring/spring-quartz.xml
+target/lazy-rest/WEB-INF/lib/jta-1.1.jar
+target/lazy-rest/WEB-INF/lib/quartz-1.8.5.jar
+target/lazy-rest/WEB-INF/lib/spring-test-4.2.6.RELEASE.jar
+target/test-classes/lazyrest/test/BaseTest.class
