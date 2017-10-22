@@ -1,6 +1,7 @@
 #LazyREST
 
 > LazyREST是一个整合了SSM的非常简单但又全面的J2EE-RESTful脚手架
+> LazyREST的SpringBoot版本：[https://github.com/melonlee/LazyREST-SpringBoot](https://github.com/melonlee/LazyREST-SpringBoot) (功能与LazyREST一致)
 
 ## 技术选型
 * Spring 4.2.6
