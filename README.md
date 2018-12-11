@@ -1,10 +1,12 @@
-#LazyREST-v2
-
-> LazyREST-v2 整合了SpingBoot以及SpingDataJpa等Sping全家桶的脚手架，方便快速产出RESTful接口
 
 #LazyREST-v1
 
-> LazyREST的v1版本请查看v1分支,基础版本，基于SSM
+> LazyREST-v1,基础版本，基于SSM: [https://github.com/melonlee/LazyREST/tree/v1](https://github.com/melonlee/LazyREST/tree/v1)
+
+#LazyREST-v2
+
+> LazyREST-v2,优化版本，基于SpingBoot以及SpingDataJpa等Sping全家桶，方便快速产出RESTful接口
+
 
 ## 技术选型
 * SpringBoot 1.5.8
