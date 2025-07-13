@@ -119,6 +119,12 @@ java -jar target/lazy-rest-1.0.0.jar
 http://localhost:8080/api/swagger-ui.html
 ```
 
+## 🏗️ 项目架构
+
+<div align="center">
+  <img src="architecture.svg" alt="LazyREST 项目架构图" width="800"/>
+</div>
+
 ## 📁 项目结构
 
 ```
